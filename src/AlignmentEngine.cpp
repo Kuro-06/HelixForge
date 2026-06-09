@@ -13,7 +13,6 @@ AlignmentEngine::AlignmentEngine(std::string inputSeqA, std::string inputSeqB) {
     gapExtend = -1;
 }
 
-
 void AlignmentEngine::scorePara(int customMatch, int customMismatch, int customGapOpen,int customGapExtend) {
     match = customMatch;
     mismatch = customMismatch;
