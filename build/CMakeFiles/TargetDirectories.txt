@@ -1,3 +1,0 @@
-/Users/piyushkumar/Documents/HelixForge/build/CMakeFiles/HelixForge.dir
-/Users/piyushkumar/Documents/HelixForge/build/CMakeFiles/edit_cache.dir
-/Users/piyushkumar/Documents/HelixForge/build/CMakeFiles/rebuild_cache.dir
