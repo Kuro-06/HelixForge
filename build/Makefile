@@ -153,29 +153,77 @@ src/AlignmentEngine.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/HelixForge.dir/build.make CMakeFiles/HelixForge.dir/src/AlignmentEngine.cpp.s
 .PHONY : src/AlignmentEngine.cpp.s
 
-src/FastaReader.o: src/FastaReader.cpp.o
-.PHONY : src/FastaReader.o
+src/AlignmentWorkflow.o: src/AlignmentWorkflow.cpp.o
+.PHONY : src/AlignmentWorkflow.o
 
 # target to build an object file
-src/FastaReader.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/HelixForge.dir/build.make CMakeFiles/HelixForge.dir/src/FastaReader.cpp.o
-.PHONY : src/FastaReader.cpp.o
+src/AlignmentWorkflow.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/HelixForge.dir/build.make CMakeFiles/HelixForge.dir/src/AlignmentWorkflow.cpp.o
+.PHONY : src/AlignmentWorkflow.cpp.o
 
-src/FastaReader.i: src/FastaReader.cpp.i
-.PHONY : src/FastaReader.i
+src/AlignmentWorkflow.i: src/AlignmentWorkflow.cpp.i
+.PHONY : src/AlignmentWorkflow.i
 
 # target to preprocess a source file
-src/FastaReader.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/HelixForge.dir/build.make CMakeFiles/HelixForge.dir/src/FastaReader.cpp.i
-.PHONY : src/FastaReader.cpp.i
+src/AlignmentWorkflow.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/HelixForge.dir/build.make CMakeFiles/HelixForge.dir/src/AlignmentWorkflow.cpp.i
+.PHONY : src/AlignmentWorkflow.cpp.i
 
-src/FastaReader.s: src/FastaReader.cpp.s
-.PHONY : src/FastaReader.s
+src/AlignmentWorkflow.s: src/AlignmentWorkflow.cpp.s
+.PHONY : src/AlignmentWorkflow.s
 
 # target to generate assembly for a file
-src/FastaReader.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/HelixForge.dir/build.make CMakeFiles/HelixForge.dir/src/FastaReader.cpp.s
-.PHONY : src/FastaReader.cpp.s
+src/AlignmentWorkflow.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/HelixForge.dir/build.make CMakeFiles/HelixForge.dir/src/AlignmentWorkflow.cpp.s
+.PHONY : src/AlignmentWorkflow.cpp.s
+
+src/SequenceUtils.o: src/SequenceUtils.cpp.o
+.PHONY : src/SequenceUtils.o
+
+# target to build an object file
+src/SequenceUtils.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/HelixForge.dir/build.make CMakeFiles/HelixForge.dir/src/SequenceUtils.cpp.o
+.PHONY : src/SequenceUtils.cpp.o
+
+src/SequenceUtils.i: src/SequenceUtils.cpp.i
+.PHONY : src/SequenceUtils.i
+
+# target to preprocess a source file
+src/SequenceUtils.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/HelixForge.dir/build.make CMakeFiles/HelixForge.dir/src/SequenceUtils.cpp.i
+.PHONY : src/SequenceUtils.cpp.i
+
+src/SequenceUtils.s: src/SequenceUtils.cpp.s
+.PHONY : src/SequenceUtils.s
+
+# target to generate assembly for a file
+src/SequenceUtils.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/HelixForge.dir/build.make CMakeFiles/HelixForge.dir/src/SequenceUtils.cpp.s
+.PHONY : src/SequenceUtils.cpp.s
+
+src/genome.o: src/genome.cpp.o
+.PHONY : src/genome.o
+
+# target to build an object file
+src/genome.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/HelixForge.dir/build.make CMakeFiles/HelixForge.dir/src/genome.cpp.o
+.PHONY : src/genome.cpp.o
+
+src/genome.i: src/genome.cpp.i
+.PHONY : src/genome.i
+
+# target to preprocess a source file
+src/genome.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/HelixForge.dir/build.make CMakeFiles/HelixForge.dir/src/genome.cpp.i
+.PHONY : src/genome.cpp.i
+
+src/genome.s: src/genome.cpp.s
+.PHONY : src/genome.s
+
+# target to generate assembly for a file
+src/genome.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/HelixForge.dir/build.make CMakeFiles/HelixForge.dir/src/genome.cpp.s
+.PHONY : src/genome.cpp.s
 
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
@@ -213,9 +261,15 @@ help:
 	@echo "... src/AlignmentEngine.o"
 	@echo "... src/AlignmentEngine.i"
 	@echo "... src/AlignmentEngine.s"
-	@echo "... src/FastaReader.o"
-	@echo "... src/FastaReader.i"
-	@echo "... src/FastaReader.s"
+	@echo "... src/AlignmentWorkflow.o"
+	@echo "... src/AlignmentWorkflow.i"
+	@echo "... src/AlignmentWorkflow.s"
+	@echo "... src/SequenceUtils.o"
+	@echo "... src/SequenceUtils.i"
+	@echo "... src/SequenceUtils.s"
+	@echo "... src/genome.o"
+	@echo "... src/genome.i"
+	@echo "... src/genome.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

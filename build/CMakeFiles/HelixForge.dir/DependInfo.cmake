@@ -9,7 +9,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/piyushkumar/Documents/HelixForge/src/AlignmentEngine.cpp" "CMakeFiles/HelixForge.dir/src/AlignmentEngine.cpp.o" "gcc" "CMakeFiles/HelixForge.dir/src/AlignmentEngine.cpp.o.d"
-  "/Users/piyushkumar/Documents/HelixForge/src/FastaReader.cpp" "CMakeFiles/HelixForge.dir/src/FastaReader.cpp.o" "gcc" "CMakeFiles/HelixForge.dir/src/FastaReader.cpp.o.d"
+  "/Users/piyushkumar/Documents/HelixForge/src/AlignmentWorkflow.cpp" "CMakeFiles/HelixForge.dir/src/AlignmentWorkflow.cpp.o" "gcc" "CMakeFiles/HelixForge.dir/src/AlignmentWorkflow.cpp.o.d"
+  "/Users/piyushkumar/Documents/HelixForge/src/SequenceUtils.cpp" "CMakeFiles/HelixForge.dir/src/SequenceUtils.cpp.o" "gcc" "CMakeFiles/HelixForge.dir/src/SequenceUtils.cpp.o.d"
+  "/Users/piyushkumar/Documents/HelixForge/src/genome.cpp" "CMakeFiles/HelixForge.dir/src/genome.cpp.o" "gcc" "CMakeFiles/HelixForge.dir/src/genome.cpp.o.d"
   "/Users/piyushkumar/Documents/HelixForge/src/main.cpp" "CMakeFiles/HelixForge.dir/src/main.cpp.o" "gcc" "CMakeFiles/HelixForge.dir/src/main.cpp.o.d"
   )
 

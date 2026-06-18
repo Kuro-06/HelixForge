@@ -2,7 +2,6 @@
 #include <string>
 #include <vector>
 
-// THIS is the only place the word "class" goes!
 class AlignmentEngine {
 private:
     std::string seqA;
@@ -23,10 +22,10 @@ private:
     int startj;
 
 public:
-    // The Constructor (Boots up the machine)
+    // constructor
     AlignmentEngine(std::string inputSeqA, std::string inputSeqB);
 
-    // The Action Buttons
+    // Action Buttons
     int Needleman();
     int Waterman();
     void TraceBack();

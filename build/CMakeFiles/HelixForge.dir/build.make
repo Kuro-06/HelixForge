@@ -100,35 +100,67 @@ CMakeFiles/HelixForge.dir/src/AlignmentEngine.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/HelixForge.dir/src/AlignmentEngine.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/piyushkumar/Documents/HelixForge/src/AlignmentEngine.cpp -o CMakeFiles/HelixForge.dir/src/AlignmentEngine.cpp.s
 
-CMakeFiles/HelixForge.dir/src/FastaReader.cpp.o: CMakeFiles/HelixForge.dir/flags.make
-CMakeFiles/HelixForge.dir/src/FastaReader.cpp.o: /Users/piyushkumar/Documents/HelixForge/src/FastaReader.cpp
-CMakeFiles/HelixForge.dir/src/FastaReader.cpp.o: CMakeFiles/HelixForge.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/piyushkumar/Documents/HelixForge/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/HelixForge.dir/src/FastaReader.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/HelixForge.dir/src/FastaReader.cpp.o -MF CMakeFiles/HelixForge.dir/src/FastaReader.cpp.o.d -o CMakeFiles/HelixForge.dir/src/FastaReader.cpp.o -c /Users/piyushkumar/Documents/HelixForge/src/FastaReader.cpp
+CMakeFiles/HelixForge.dir/src/genome.cpp.o: CMakeFiles/HelixForge.dir/flags.make
+CMakeFiles/HelixForge.dir/src/genome.cpp.o: /Users/piyushkumar/Documents/HelixForge/src/genome.cpp
+CMakeFiles/HelixForge.dir/src/genome.cpp.o: CMakeFiles/HelixForge.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/piyushkumar/Documents/HelixForge/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/HelixForge.dir/src/genome.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/HelixForge.dir/src/genome.cpp.o -MF CMakeFiles/HelixForge.dir/src/genome.cpp.o.d -o CMakeFiles/HelixForge.dir/src/genome.cpp.o -c /Users/piyushkumar/Documents/HelixForge/src/genome.cpp
 
-CMakeFiles/HelixForge.dir/src/FastaReader.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/HelixForge.dir/src/FastaReader.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/piyushkumar/Documents/HelixForge/src/FastaReader.cpp > CMakeFiles/HelixForge.dir/src/FastaReader.cpp.i
+CMakeFiles/HelixForge.dir/src/genome.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/HelixForge.dir/src/genome.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/piyushkumar/Documents/HelixForge/src/genome.cpp > CMakeFiles/HelixForge.dir/src/genome.cpp.i
 
-CMakeFiles/HelixForge.dir/src/FastaReader.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/HelixForge.dir/src/FastaReader.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/piyushkumar/Documents/HelixForge/src/FastaReader.cpp -o CMakeFiles/HelixForge.dir/src/FastaReader.cpp.s
+CMakeFiles/HelixForge.dir/src/genome.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/HelixForge.dir/src/genome.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/piyushkumar/Documents/HelixForge/src/genome.cpp -o CMakeFiles/HelixForge.dir/src/genome.cpp.s
+
+CMakeFiles/HelixForge.dir/src/SequenceUtils.cpp.o: CMakeFiles/HelixForge.dir/flags.make
+CMakeFiles/HelixForge.dir/src/SequenceUtils.cpp.o: /Users/piyushkumar/Documents/HelixForge/src/SequenceUtils.cpp
+CMakeFiles/HelixForge.dir/src/SequenceUtils.cpp.o: CMakeFiles/HelixForge.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/piyushkumar/Documents/HelixForge/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/HelixForge.dir/src/SequenceUtils.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/HelixForge.dir/src/SequenceUtils.cpp.o -MF CMakeFiles/HelixForge.dir/src/SequenceUtils.cpp.o.d -o CMakeFiles/HelixForge.dir/src/SequenceUtils.cpp.o -c /Users/piyushkumar/Documents/HelixForge/src/SequenceUtils.cpp
+
+CMakeFiles/HelixForge.dir/src/SequenceUtils.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/HelixForge.dir/src/SequenceUtils.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/piyushkumar/Documents/HelixForge/src/SequenceUtils.cpp > CMakeFiles/HelixForge.dir/src/SequenceUtils.cpp.i
+
+CMakeFiles/HelixForge.dir/src/SequenceUtils.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/HelixForge.dir/src/SequenceUtils.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/piyushkumar/Documents/HelixForge/src/SequenceUtils.cpp -o CMakeFiles/HelixForge.dir/src/SequenceUtils.cpp.s
+
+CMakeFiles/HelixForge.dir/src/AlignmentWorkflow.cpp.o: CMakeFiles/HelixForge.dir/flags.make
+CMakeFiles/HelixForge.dir/src/AlignmentWorkflow.cpp.o: /Users/piyushkumar/Documents/HelixForge/src/AlignmentWorkflow.cpp
+CMakeFiles/HelixForge.dir/src/AlignmentWorkflow.cpp.o: CMakeFiles/HelixForge.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/piyushkumar/Documents/HelixForge/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/HelixForge.dir/src/AlignmentWorkflow.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/HelixForge.dir/src/AlignmentWorkflow.cpp.o -MF CMakeFiles/HelixForge.dir/src/AlignmentWorkflow.cpp.o.d -o CMakeFiles/HelixForge.dir/src/AlignmentWorkflow.cpp.o -c /Users/piyushkumar/Documents/HelixForge/src/AlignmentWorkflow.cpp
+
+CMakeFiles/HelixForge.dir/src/AlignmentWorkflow.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/HelixForge.dir/src/AlignmentWorkflow.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/piyushkumar/Documents/HelixForge/src/AlignmentWorkflow.cpp > CMakeFiles/HelixForge.dir/src/AlignmentWorkflow.cpp.i
+
+CMakeFiles/HelixForge.dir/src/AlignmentWorkflow.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/HelixForge.dir/src/AlignmentWorkflow.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/piyushkumar/Documents/HelixForge/src/AlignmentWorkflow.cpp -o CMakeFiles/HelixForge.dir/src/AlignmentWorkflow.cpp.s
 
 # Object files for target HelixForge
 HelixForge_OBJECTS = \
 "CMakeFiles/HelixForge.dir/src/main.cpp.o" \
 "CMakeFiles/HelixForge.dir/src/AlignmentEngine.cpp.o" \
-"CMakeFiles/HelixForge.dir/src/FastaReader.cpp.o"
+"CMakeFiles/HelixForge.dir/src/genome.cpp.o" \
+"CMakeFiles/HelixForge.dir/src/SequenceUtils.cpp.o" \
+"CMakeFiles/HelixForge.dir/src/AlignmentWorkflow.cpp.o"
 
 # External object files for target HelixForge
 HelixForge_EXTERNAL_OBJECTS =
 
 HelixForge: CMakeFiles/HelixForge.dir/src/main.cpp.o
 HelixForge: CMakeFiles/HelixForge.dir/src/AlignmentEngine.cpp.o
-HelixForge: CMakeFiles/HelixForge.dir/src/FastaReader.cpp.o
+HelixForge: CMakeFiles/HelixForge.dir/src/genome.cpp.o
+HelixForge: CMakeFiles/HelixForge.dir/src/SequenceUtils.cpp.o
+HelixForge: CMakeFiles/HelixForge.dir/src/AlignmentWorkflow.cpp.o
 HelixForge: CMakeFiles/HelixForge.dir/build.make
 HelixForge: CMakeFiles/HelixForge.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/piyushkumar/Documents/HelixForge/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable HelixForge"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/piyushkumar/Documents/HelixForge/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable HelixForge"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/HelixForge.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
