@@ -9,7 +9,7 @@ add_executable(HelixForge
   
   src/genome.cpp
   
-  src/SequenceUtils.cpp
+
   src/AlignmentWorkflow 
  )
 

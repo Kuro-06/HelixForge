@@ -2,62 +2,99 @@
 #include <fstream>
 #include <iostream>
 #include <algorithm>
+#include <cstdint>
+#include <cctype>
 
-// info extractor for fasta fiile
-void Genome::loadFromFasta(const std::string& filepath) {
-    std::ifstream file(filepath);
-    
-    //check file path
-    if (!file.is_open()) {
-        std::cerr << "ERROR: Could not open FASTA file at " << filepath << std::endl;
-        return; 
-    }
 
-    std::string line;
-    bool isFirstHeaderFound = false;
-
-    //resrting variables for the class
-    header = "";
-    originalSequence = "";
-
-    std::cout << "Processing FASTA file: " << filepath << "..." << std::endl;
-
-    while (std::getline(file, line)) {
-        //remove empty char
-        if (!line.empty() && line.back() == '\r') {
-            line.pop_back();
-        }
-        // remove empty lines
-        if (line.empty()) continue;
-
-        // header existence check
-        if (line[0] == '>') {
-            if (isFirstHeaderFound) break;
-            header = line.substr(1);
-            isFirstHeaderFound = true;
-        } 
-        //else its a sequence file
-        else {
-            originalSequence += line;
-        }
-    }
-
-    file.close();
-
-    std::cout << "Loaded sequence: '" << header << "'" << std::endl;
-    std::cout << "Total Base Pairs: " << originalSequence.length() << std::endl;
+Genome::Genome(bool proteinMode) : isProtein(proteinMode) {
+    alphabetSize = isProtein ? 25 : 6; 
 }
 
-//helper struct for prefix doubling
+uint8_t Genome::getBaseIndex(char c) const {
+    if (!isProtein) {
+        switch (c) {
+            case '$': return 0;
+            case 'A': return 1;
+            case 'C': return 2;
+            case 'G': return 3;
+            case 'T': return 4;
+            default:  return 5; 
+        }
+    } else {
+        switch(c) {
+            case '$': return 0;
+            case '*': return 1;
+            case 'A': return 2;
+            case 'B': return 3;
+            case 'C': return 4;
+            case 'D': return 5;
+            case 'E': return 6;
+            case 'F': return 7;
+            case 'G': return 8;
+            case 'H': return 9;
+            case 'I': return 10;
+            case 'K': return 11;
+            case 'L': return 12;
+            case 'M': return 13;
+            case 'N': return 14;
+            case 'P': return 15;
+            case 'Q': return 16;
+            case 'R': return 17;
+            case 'S': return 18;
+            case 'T': return 19;
+            case 'V': return 20;
+            case 'W': return 21;
+            case 'X': return 22;
+            case 'Y': return 23;
+            case 'Z': return 24;
+            default: return 22; // Map unknowns to 'X' (22)
+        }
+    }
+}
+
+// info extractor for fasta fiile
+bool Genome::loadFromFasta(const std::string& filename) {
+    std::ifstream file(filename);
+
+    if (!file.is_open()) return false;
+
+    std::string line;
+    std::string tempSequence = "";
+
+    while (std::getline(file, line)) {
+        if (line.empty() || line[0] == '>') {
+            continue;
+        }
+        
+        
+        if (line.back() == '\r') {
+            line.pop_back();
+        }
+        line.erase(std::remove_if(line.begin(), line.end(), ::isspace), line.end());
+        tempSequence += line;
+    }
+    
+    file.close();
+
+    
+    if (tempSequence.empty()) {
+        return false;
+    }
+    
+
+    
+    originalSequence = tempSequence;
+    return true; //load sucess
+}
+
+//struct forprefix doubling
 struct Suffix {
     int index;     
     int rank[2];
 };
 void Genome::buildBWT() {
-    if (originalSequence.empty()) {
-        std::cout << "[ERROR] No sequence loaded. Cannot build BWT." << std::endl;
-        return;
-    }
+    if (originalSequence.empty()) return;
+    
 
     std::string seq = originalSequence + "$";
     int n = seq.length();
@@ -70,7 +107,7 @@ void Genome::buildBWT() {
         suffixes[i].rank[1] = ((i + 1) < n) ? (seq[i + 1]) : -1;   
     }
 
-    // 2. Sort based on the first two characters
+    //sorting based on 1st 2 chars
     auto compareSuffixes = [](const Suffix& a, const Suffix& b) {
         return (a.rank[0] == b.rank[0]) ? (a.rank[1] < b.rank[1]) : (a.rank[0] < b.rank[0]);
     };
@@ -122,31 +159,20 @@ void Genome::buildBWT() {
         }
     }
     generateFMTables(); //for query searching
-
-    std::cout << "[SUCCESS] High-Speed BWT Compressed Engine Online!" << std::endl;
 }
 
 void Genome::generateFMTables() {
     int n = bwtSequence.length();
 
-    //Count occurrences of each character
-    counts.assign(256, 0); 
+    //count occ
+    counts.assign(alphabetSize, 0); 
     for (int i = 0; i < n; i++) {
-        counts[(unsigned char)bwtSequence[i]]++; 
+        counts[getBaseIndex(bwtSequence[i])]++; 
     }
-
-
-    //scan the counts to know which chars exist
-    std::vector<unsigned char> activeAlphabet;
-    for (int i = 0; i < 256; i++) {
-        if (counts[i] > 0) {
-            activeAlphabet.push_back((unsigned char)i);
-        }
-    }
-
-    //running cumilative total
+    
+    //running totals
     int runningTotal = 0;
-    for (int i = 0; i < 256; i++) {
+    for (int i = 0; i < alphabetSize; i++) {
         if (counts[i] > 0) {
             int temp = counts[i];     
             counts[i] = runningTotal; 
@@ -154,14 +180,13 @@ void Genome::generateFMTables() {
         }
     }
 
-    //occourance matrix
-    occ.assign(256, std::vector<int>(n + 1, 0));
+    //occ matrix
+    occ.assign(alphabetSize, std::vector<int>(n + 1, 0));
     for (int i = 0; i < n; i++) {
-        // dosen't loop 256 times (at max 5-6 DNA / 21 Protein )
-        for (unsigned char c : activeAlphabet) {
+        for (int c = 0; c < alphabetSize; c++) {
             occ[c][i + 1] = occ[c][i]; 
         }
-        occ[(unsigned char)bwtSequence[i]][i + 1]++; 
+        occ[getBaseIndex(bwtSequence[i])][i + 1]++; 
     }
 }
 
@@ -169,9 +194,12 @@ bool Genome::saveIndex(const std::string& filepath) {
     std::ofstream out(filepath, std::ios::binary);
     if (!out.is_open()) return false;
 
+    uint8_t proteinFlag = isProtein ? 1 : 0;
+    out.write(reinterpret_cast<const char*>(&proteinFlag), sizeof(proteinFlag));
+
     // Binary String writing Lamda
     auto writeString = [&out](const std::string& str) {
-        size_t len = str.length();
+        uint64_t len = str.length();
         out.write(reinterpret_cast<const char*>(&len), sizeof(len)); // syntax : out.write(adress , no of bytes)
         // reinterpret cast : writes directly binary bits to file 
         out.write(str.data(), len);                                  
@@ -179,7 +207,7 @@ bool Genome::saveIndex(const std::string& filepath) {
 
     // Binary Vector<int> writing Lamda
     auto writeIntVector = [&out](const std::vector<int>& vec) {
-        size_t len = vec.size();
+        uint64_t len = vec.size();
         out.write(reinterpret_cast<const char*>(&len), sizeof(len)); 
         if (len > 0) {
             out.write(reinterpret_cast<const char*>(vec.data()), len * sizeof(int));
@@ -200,9 +228,14 @@ bool Genome::loadIndex(const std::string& filepath) {
     std::ifstream in(filepath, std::ios::binary);
     if (!in.is_open()) return false;
 
+    uint8_t proteinFlag = 0;
+    in.read(reinterpret_cast<char*>(&proteinFlag), sizeof(proteinFlag));
+    isProtein = (proteinFlag == 1);
+    alphabetSize = isProtein ? 25 : 6;
+
    // Binary string reader (for the exact format we encoded the file)
     auto readString = [&in](std::string& str) {
-        size_t len = 0;
+        uint64_t len = 0;
         in.read(reinterpret_cast<char*>(&len), sizeof(len)); 
         str.resize(len);                                     
         in.read(&str[0], len);                               
@@ -210,7 +243,7 @@ bool Genome::loadIndex(const std::string& filepath) {
 
     //Binary vector reader (same as writing format)
     auto readIntVector = [&in](std::vector<int>& vec) {
-        size_t len = 0;
+        uint64_t len = 0;
         in.read(reinterpret_cast<char*>(&len), sizeof(len)); 
         vec.resize(len);
         if (len > 0) {
@@ -231,7 +264,7 @@ bool Genome::loadIndex(const std::string& filepath) {
     return true;
 }
 
-std::vector<int> Genome::search(const std::string& query) {
+std::vector<int> Genome::search(const std::string_view query) {
     std::vector<int> matches; 
     if (bwtSequence.empty() || query.empty()) return matches;
     
@@ -239,12 +272,24 @@ std::vector<int> Genome::search(const std::string& query) {
     int bottom = bwtSequence.length() - 1;
 
     for (int i = query.length() - 1; i >= 0; i--) {
-        unsigned char c = query[i]; 
-        top = counts[c] + occ[c][top]; 
-        bottom = counts[c] + occ[c][bottom + 1] - 1; 
+        
+        uint8_t c_idx = getBaseIndex(query[i]); 
+        
+        
+        if (c_idx >= alphabetSize) {
+            return matches; 
+        }
+
+       
+        top = counts[c_idx] + occ[c_idx][top]; 
+        bottom = counts[c_idx] + occ[c_idx][bottom + 1] - 1; 
+        
         if (top > bottom) return matches; 
     }
 
-    for (int i = top; i <= bottom; i++) matches.push_back(suffixArray[i]); 
+    for (int i = top; i <= bottom; i++) {
+        matches.push_back(suffixArray[i]); 
+    }
+    
     return matches;
 }

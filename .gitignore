@@ -11,18 +11,10 @@
 *.gch
 *.pch
 
-# Linker files
-*.ilk
-
-# Debugger Files
-*.pdb
-
 # Compiled Dynamic libraries
 *.so
 *.dylib
 *.dll
-*.so.*
-
 
 # Fortran module files
 *.mod
@@ -39,31 +31,23 @@
 *.out
 *.app
 
-# Build directories
+# CMake build directories
 build/
-Build/
-build-*/
-
-# CMake generated files
-CMakeFiles/
 CMakeCache.txt
-cmake_install.cmake
+CMakeFiles/
+CMakeScripts/
+Testing/
 Makefile
+cmake_install.cmake
 install_manifest.txt
 compile_commands.json
+CTestTestfile.cmake
+_deps/
 
-# Temporary files
-*.tmp
-*.log
-*.bak
-*.swp
+# HelixForge Specific (Ignore generated binaries but keep the folders/fastas)
+database/dna/*.idx
+database/protein/*.idx
 
-# vcpkg
-vcpkg_installed/
-
-# debug information files
-*.dwo
-
-# test output & cache
-Testing/
-.cache/
+# OS Specific
+.DS_Store
+Thumbs.db

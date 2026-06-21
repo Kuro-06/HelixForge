@@ -6,28 +6,31 @@
 #include <algorithm> 
 #include <utility> 
 
+
 namespace AlignmentWorkflow {
 
-    std::pair<int, int> findBestCluster(Genome& targetGenome, const std::string& querySeq, int k) {
+    ClusterResult findBestCluster(Genome& targetGenome, const std::string_view querySeq, int k) {
+        
+        ClusterResult result = {false, -1, -1, 0, 0};
         //query too smalll
-        if (querySeq.length() < k) return {-1, -1};
+        if (querySeq.length() < static_cast<size_t>(k)) return result;
 
         std::vector<int> allHits;
         int limit = querySeq.length() - k;
-
-        std::cout << "[SYSTEM] Extracting " << k << "-mer seeds and querying FM-Index...\n";
+        const size_t MAX_HITS_PER_SEED = 65;
 
         for (int i = 0; i <= limit; i++) {
-            std::string currentKmer = querySeq.substr(i, k);
+            std::string_view currentKmer= querySeq.substr(i, k);
             std::vector<int> hits = targetGenome.search(currentKmer);
+
+            if (hits.size() > MAX_HITS_PER_SEED) continue;
             allHits.insert(allHits.end(), hits.begin(), hits.end());
         }
 
-        if (allHits.empty()) {
-            return {-1, -1}; 
-        }
+        if (allHits.empty()) return result;
 
         std::sort(allHits.begin(), allHits.end());
+        result.totalHits = allHits.size();
 
         int queryLen = querySeq.length();
         int dynamicGap = queryLen / 2; 
@@ -69,8 +72,12 @@ namespace AlignmentWorkflow {
             bestChainEnd = currentChainEnd;
         }
 
-        std::cout << "[RESULT] Densest cluster found with " << maxDensity << " overlapping seeds.\n";
-        return {bestChainStart, bestChainEnd + k};
+        result.success = true;
+        result.start = bestChainStart;
+        result.end = bestChainEnd + k;
+        result.maxDensity = maxDensity;
+        
+        return result;
     }
 
 }
